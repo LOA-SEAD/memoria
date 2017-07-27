@@ -1,0 +1,40 @@
+#divVoltar
+{
+	text-align: center;
+}
+
+.card-sobre:hover
+{
+	-moz-transition-duration:0.8s;
+	-moz-transform: scale(1.1, 1.1);
+	
+	-ms-transform: scale(1.1, 1.1);
+	-ms-transition-duration:0.8s;
+		
+	-webkit-transition-duration: 0.8s; 
+	-webkit-transform: scale(1.1, 1.1);	
+	
+	z-index: 11;
+}
+
+.card-sobre-text
+{
+	-moz-transition-duration: 0s;
+	-moz-transform: scale(1.15, 1.15);
+	
+	-ms-transform: scale(1.15, 1.15);
+	-ms-transform-duration: 0s;	
+	
+	-webkit-transition-duration: 0s;
+	-webkit-transform: scale(1.15, 1.15);
+		
+	z-index:11;	
+}
+
+.divTextoSobre
+{
+	position: relative;
+	left: 50%;	
+	margin-left:-145px;	
+	width: 360px;
+}
