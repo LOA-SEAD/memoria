@@ -18,7 +18,6 @@ $.ajax({
     success: function (data) {
         descreveSobreGeral = $.parseJSON(data).descreveSobreGeral;
         direcao = $.parseJSON(data).direcao;  // horizontal ou vertical
-        console.log(direcao);
     },
     error: function(request, status, error){
         console.log(error);

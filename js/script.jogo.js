@@ -1,6 +1,5 @@
 //Variavel global que guarda todas as outras
 var memoria = {};
-var direcao = {};
 
 $.ajax({
 	url: "json/descricao.json",
@@ -10,6 +9,9 @@ $.ajax({
 	success: function (data) {
 		direcao = $.parseJSON(data).direcao;  // true = horizontal, false = vertical
 		tempoCarta = $.parseJSON(data).tempoCarta;  // tempo para revirar as cartas após virar duas
+		totalParesFacilUpload = $.parseJSON(data).totalParesFacilUpload;  // total de pares que o usuario deu upload no remar para o nivel facil
+		totalParesMedioUpload = $.parseJSON(data).totalParesMedioUpload;  // total de pares que o usuario deu upload no remar para o nivel medio
+		totalParesDificilUpload = $.parseJSON(data).totalParesDificilUpload;  // total de pares que o usuario deu upload no remar para o nivel dificil
 	},
 	error: function(request, status, error){
 	}
@@ -25,85 +27,22 @@ memoria.numeroDePares = 1;
 //Apenas inicializando. Depois ela será mudada
 memoria.numeroDeCartas = memoria.numeroDePares*2;
 
-if(direcao == "horizontal"){
-	//Um deck auxiliar para guarda todas as cartas que podem ter o jogo
-	memoria.deckAuxFacil = [
-		'card-h-0-0', 'card-h-1-0',
-		'card-h-0-1', 'card-h-1-1',
-		'card-h-2-0', 'card-h-3-0',
-		'card-h-2-1', 'card-h-3-1',
-		'card-h-4-0', 'card-h-5-0',
-		'card-h-4-1', 'card-h-5-1',
-		'card-h-6-0', 'card-h-7-0',
-		'card-h-6-1', 'card-h-7-1'
-	];
+memoria.deckAuxFacil = []
+for (i=0; i < totalParesFacilUpload; i++){
+	memoria.deckAuxFacil.push("card-" + direcao.charAt(0) + "-" + "0" + "-" + i );
+	memoria.deckAuxFacil.push("card-" + direcao.charAt(0) + "-" + "1" + "-" + i );
+}
 
-	//Um deck auxiliar para guarda todas as cartas que podem ter o jogo
-	memoria.deckAuxMedio = [
-		'card-h-0-2', 'card-h-1-2',
-		'card-h-0-3', 'card-h-1-3',
-		'card-h-0-4', 'card-h-1-4',
-		'card-h-2-2', 'card-h-3-2',
-		'card-h-2-3', 'card-h-3-3',
-		'card-h-2-4', 'card-h-3-4',
-		'card-h-4-2', 'card-h-5-2',
-		'card-h-4-3', 'card-h-5-3',
-		'card-h-4-4', 'card-h-5-4',
-		'card-h-6-2', 'card-h-7-2',
-		'card-h-6-3', 'card-h-7-3',
-		'card-h-6-4', 'card-h-7-4'
-	];
+memoria.deckAuxMedio = []
+for (i=0; i < totalParesMedioUpload; i++){
+	memoria.deckAuxMedio.push("card-" + direcao.charAt(0) + "-" + "2" + "-" + i );
+	memoria.deckAuxMedio.push("card-" + direcao.charAt(0) + "-" + "3" + "-" + i );
+}
 
-
-	//Um deck auxiliar para guarda todas as cartas que podem ter o jogo
-	memoria.deckAuxDificil = [
-		'card-h-0-3', 'card-h-1-3',
-		'card-h-0-4', 'card-h-1-4',
-		'card-h-0-5', 'card-h-1-5',
-		'card-h-0-6', 'card-h-1-6',
-		'card-h-2-3', 'card-h-3-3',
-		'card-h-2-4', 'card-h-3-4',
-		'card-h-2-5', 'card-h-3-5',
-		'card-h-2-6', 'card-h-3-6',
-		'card-h-4-3', 'card-h-5-3',
-		'card-h-4-4', 'card-h-5-4',
-		'card-h-4-5', 'card-h-5-5',
-		'card-h-4-6', 'card-h-5-6',
-		'card-h-6-3', 'card-h-7-3',
-		'card-h-6-4', 'card-h-7-4',
-		'card-h-6-5', 'card-h-7-5',
-		'card-h-6-6', 'card-h-7-6'
-	];
-}else{
-	memoria.deckAuxFacil = [
-		'card-v-0-0', 'card-v-1-0',
-		'card-v-0-1', 'card-v-1-1',
-		'card-v-0-2', 'card-v-1-2',
-		'card-v-0-3', 'card-v-1-3'
-	];
-
-	//Um deck auxiliar para guarda todas as cartas que podem ter o jogo
-	memoria.deckAuxMedio = [
-		'card-v-2-0', 'card-v-3-0',
-		'card-v-2-1', 'card-v-3-1',
-		'card-v-2-2', 'card-v-3-2',
-		'card-v-2-3', 'card-v-3-3',
-		'card-v-2-4', 'card-v-3-4',
-		'card-v-2-5', 'card-v-3-5'
-	];
-
-
-	//Um deck auxiliar para guarda todas as cartas que podem ter o jogo
-	memoria.deckAuxDificil = [
-		'card-v-4-0', 'card-v-5-0',
-		'card-v-4-1', 'card-v-5-1',
-		'card-v-4-2', 'card-v-5-2',
-		'card-v-4-3', 'card-v-5-3',
-		'card-v-4-4', 'card-v-5-4',
-		'card-v-4-5', 'card-v-5-5',
-		'card-v-4-6', 'card-v-5-6',
-		'card-v-4-7', 'card-v-5-7'
-	];
+memoria.deckAuxDificil = []
+for (i=0; i < totalParesDificilUpload; i++){
+	memoria.deckAuxDificil.push("card-" + direcao.charAt(0) + "-" + "4" + "-" + i );
+	memoria.deckAuxDificil.push("card-" + direcao.charAt(0) + "-" + "5" + "-" + i );
 }
 
 function Initialize(numeroDeCartasPar)

@@ -1,5 +1,8 @@
 {
     "descreveSobreGeral": "dsadasdsa",
     "direcao": "vertical",
+    "totalParesFacilUpload": 4,
+    "totalParesMedioUpload": 10,
+    "totalParesDificilUpload": 10,
     "tempoCarta": 500
 }
