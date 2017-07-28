@@ -1,0 +1,33 @@
+@import "descricao.json";
+
+$card-values: ();
+
+// Geração de código para a quantidade de pares fácil
+@for $i from 0 through 1 {
+    @for $j from 0 through ($totalParesFacilUpload - 1) {
+        $w: 80*$j;
+        $h: 120*($i+1);
+
+            .card-v-#{$i}-#{$j} {
+                background-position: -#{$w}px -#{$h}px;
+
+            $card-values: append($card-values, $w, comma);
+        }
+
+    }
+}
+
+// Geração de código para a quantidade de pares medio
+@for $i from 2 through 3 {
+    @for $j from 0 through ($totalParesMedioUpload - 1) {
+        $w: 80*$j;
+        $h: 120*($i+1);
+
+            .card-v-#{$i}-#{$j} {
+                background-position: -#{$w}px -#{$h}px;
+
+            $card-values: append($card-values, $w, comma);
+        }
+
+    }
+}
