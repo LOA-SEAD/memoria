@@ -17,10 +17,12 @@ $.ajax({
 
 //var direcao = false; // true = horizontal, false = vertical
 
-//Variavel que guarda quantos pares de cartas diferentes ter� o jogo
+//Variavel que guarda quantos pares de cartas diferentes terá o jogo
+//Apenas inicializando. Depois ela será mudada
 memoria.numeroDePares = 1;
 
 //Varivel que guarda quantas cartas o jogo vai ter
+//Apenas inicializando. Depois ela será mudada
 memoria.numeroDeCartas = memoria.numeroDePares*2;
 
 if(direcao == "horizontal"){
@@ -127,11 +129,24 @@ function Initialize(numeroDeCartasPar)
 		memoria.estaNoDeck[contador] = false;
 	}
 
+	switch(memoria.numeroDePares){
+		case 4:
+		var possibilidades = memoria.deckAuxFacil.length/2;
+		break;
+		
+		case 6:
+		var possibilidades = memoria.deckAuxMedio.length/2;
+		break;
 
+		default:
+		var possibilidades = memoria.deckAuxDificil.length/2;
+		break;
+	}
 	//Ciclo para colocar em deck
 	for (var contador = 0; contador < memoria.numeroDeCartas; contador++)
 	{
-		var auxiliar = parseInt(parseInt(Math.random()*48)%memoria.numeroDeCartas);
+		
+		var auxiliar = parseInt(parseInt(Math.random()*48)%possibilidades);
 
 		if(!memoria.estaNoDeck[auxiliar])
 		{
@@ -216,13 +231,12 @@ function Initialize(numeroDeCartasPar)
 //Funcao que fica verificando se o jogo terminou
 function Update()
 {
-	console.log($("#cards").children(':first-child'));
 	//Verifica se existe alguma carta em jogo
-	/*if($("#cards").children(':first-child').data("pattern") == null)
+	if($("#cards").children(':first-child').data("pattern") == null)
 	{
 		//Termina o jogo
 		memoria.fimDeJogo = true;
-	}*/
+	}
 
 	//Se o jogo tiver terminado
 	if(memoria.fimDeJogo)
@@ -295,11 +309,11 @@ function isMatchPattern()
 	var cards = $(".card-flipped");
 	var pattern = $(cards[0]).data("pattern");
 
-	var s1 = Math.floor(parseInt(pattern.split("-")[1])/2);
-	var n1 = parseInt(pattern.split("-")[2]);
+	var s1 = Math.floor(parseInt(pattern.split("-")[2])/2);
+	var n1 = parseInt(pattern.split("-")[3]);
 	var anotherPattern = $(cards[1]).data("pattern");
 
-	var s2 = Math.floor(parseInt(anotherPattern.split("-")[1])/2);
-	var n2 = parseInt(anotherPattern.split("-")[2]);
+	var s2 = Math.floor(parseInt(anotherPattern.split("-")[2])/2);
+	var n2 = parseInt(anotherPattern.split("-")[3]);
 	return (s1 == s2 && n1 == n2);
 }
