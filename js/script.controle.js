@@ -47,7 +47,7 @@ function buildMenu()
 
     var sobreGeral = document.createElement("div");
     sobreGeral.setAttribute("id", "sobreGeral");
-    sobreGeral.innerHTML = "A filosofia deste jogo está dividida em duas partes:<br><br>" + descreveSobreGeral + "<br<br>• Testar sua memória associando, por meio de seus conhecimentos, duas cartas que se complementam, sendo possivel aprender os conceitos utilizados neste jogo acessando algumas cartas no botão com um ponto de interrogação (?).<br><br>Aprenda mais sobre a programação neste desafio de memória!";
+    sobreGeral.innerHTML = "<h3>A filosofia deste jogo consiste em testar sua memória associando, por meio de seus conhecimentos, duas cartas que se complementam.<br><br>Aprenda mais neste desafio de memória!</h3>";
     el.appendChild(sobreGeral);
 
     var botao = document.createElement("button");
@@ -72,20 +72,20 @@ function buildMenu()
     el.appendChild(botao);
 
 
-    var botao = document.createElement("button");
+    /* var botao = document.createElement("button");
     botao.setAttribute("id" , "btSobre");
     botao.setAttribute("class" , "botao");
     botao.setAttribute("type" , "button");
     botao.setAttribute("style", "background: url(imgs/sobre.png); width:100px; height:100px; border:0;");
-    el.appendChild(botao);
+    el.appendChild(botao);*/
 
 
-    var botao = document.createElement("button");
+    /* var botao = document.createElement("button");
     botao.setAttribute("id" , "bt3");
     botao.setAttribute("class" , "botao");
     botao.setAttribute("type" , "button");
     botao.setAttribute("style", "background: url(imgs/creditos.png); width:100; height:100px; border:0;");
-    el.appendChild(botao);
+    el.appendChild(botao); */
 
     if(!document.getElementById("botaoSom")){
         var botao = document.createElement("button");
