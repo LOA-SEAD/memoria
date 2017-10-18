@@ -40,18 +40,6 @@
 .card-v-2-5 {
   background-position: -400px -360px; }
 
-.card-v-2-6 {
-  background-position: -480px -360px; }
-
-.card-v-2-7 {
-  background-position: -560px -360px; }
-
-.card-v-2-8 {
-  background-position: -640px -360px; }
-
-.card-v-2-9 {
-  background-position: -720px -360px; }
-
 .card-v-3-0 {
   background-position: -0px -480px; }
 
@@ -70,16 +58,52 @@
 .card-v-3-5 {
   background-position: -400px -480px; }
 
-.card-v-3-6 {
-  background-position: -480px -480px; }
+.card-v-4-0 {
+  background-position: -0px -600px; }
 
-.card-v-3-7 {
-  background-position: -560px -480px; }
+.card-v-4-1 {
+  background-position: -80px -600px; }
 
-.card-v-3-8 {
-  background-position: -640px -480px; }
+.card-v-4-2 {
+  background-position: -160px -600px; }
 
-.card-v-3-9 {
-  background-position: -720px -480px; }
+.card-v-4-3 {
+  background-position: -240px -600px; }
+
+.card-v-4-4 {
+  background-position: -320px -600px; }
+
+.card-v-4-5 {
+  background-position: -400px -600px; }
+
+.card-v-4-6 {
+  background-position: -480px -600px; }
+
+.card-v-4-7 {
+  background-position: -560px -600px; }
+
+.card-v-5-0 {
+  background-position: -0px -720px; }
+
+.card-v-5-1 {
+  background-position: -80px -720px; }
+
+.card-v-5-2 {
+  background-position: -160px -720px; }
+
+.card-v-5-3 {
+  background-position: -240px -720px; }
+
+.card-v-5-4 {
+  background-position: -320px -720px; }
+
+.card-v-5-5 {
+  background-position: -400px -720px; }
+
+.card-v-5-6 {
+  background-position: -480px -720px; }
+
+.card-v-5-7 {
+  background-position: -560px -720px; }
 
 /*# sourceMappingURL=output.css.map */
