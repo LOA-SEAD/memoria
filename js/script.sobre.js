@@ -1,29 +1,49 @@
 var sobre = {};
 
-sobre.deck = [
-	'card-1-0',
-	'card-1-1',
-	'card-3-0',
-	'card-3-1',
-	'card-5-0',
-	'card-5-1',
-	'card-7-0',
-	'card-7-1',
-	'card-3-2',
-	'card-1-3',
-	'card-3-4',
-	'card-3-3',
-	'card-5-4',
-	'card-7-3',
-	'card-7-4',
-	'card-1-6'
-];
+//Leitura do json onde se encontra os parametros da customizacao
+$.ajax({
+	url: "json/descricao.json",
+	dataType: "text",
+	mimeType: "application/json",
+	async: false,
+	success: function (data) {
+		direcao = $.parseJSON(data).direcao;  // true = horizontal, false = vertical
+		totalParesFacilUpload = $.parseJSON(data).totalParesFacilUpload;  // total de pares que o usuario deu upload no remar para o nivel facil
+		totalParesMedioUpload = $.parseJSON(data).totalParesMedioUpload;  // total de pares que o usuario deu upload no remar para o nivel medio
+		totalParesDificilUpload = $.parseJSON(data).totalParesDificilUpload;  // total de pares que o usuario deu upload no remar para o nivel dificil
+	},
+	error: function(request, status, error){
+	}
+});
 
-//SOLUCAO PARA ORDEM QUE NAO SEJA 1-0, 1-1, 1-2... DO DECK
-sobre.linha = [0,0,2,2,4,4,6,6,2,0,2,2,4,6,6,0]; // SUBTRAI 1 DO NUMERO ORIGINAL
-sobre.coluna = [0,1,0,1,0,1,0,1,2,3,4,3,4,3,4,6]; // MANTEM O NUMERO ORIGINAL
+//Cria o vetor das cartas que serao exibidas no sobre vazio
+sobre.deck = [];
+//Cria os vetores que importarao as cartas para apresenta-las quando o jogador clicar sobre elas na ajuda
+sobre.linha = [];
+sobre.coluna = [];
+//Adiciona todas as cartas conforme os parametros do json, concatenando strings para formar o nome da carta
+for (var i = 0; i < totalParesFacilUpload; i++){
+	sobre.deck.push("card-" + direcao.charAt(0) + "-1-" + i )
+	sobre.linha.push(0)
+	sobre.coluna.push(i)
+}
+
+for (var i = 0; i < totalParesMedioUpload; i++){
+	sobre.deck.push("card-" + direcao.charAt(0) + "-3-" + i )
+	sobre.linha.push(2)
+	sobre.coluna.push(i)
+}
+
+for (var i = 0; i < totalParesDificilUpload; i++){
+	sobre.deck.push("card-" + direcao.charAt(0) + "-5-" + i )
+	sobre.linha.push(4)
+	sobre.coluna.push(i)
+}
 
 sobre.card = new Array();
+
+//Calcula como serao divididas as cartas no menu de ajuda
+var numeroCartas = totalParesFacilUpload + totalParesMedioUpload + totalParesDificilUpload
 
 function InitializeSobre()
 {
@@ -34,16 +54,21 @@ function InitializeSobre()
 	for(var i = 0; i <  sobre.deck.length; i++)
 	{			
 		sobre.card[i] = document.createElement("div");
-		sobre.card[i].setAttribute("class", "card cardBotao");
+		sobre.card[i].setAttribute("class", "card-" + direcao.charAt(0));
 		cartas.appendChild(sobre.card[i]);
 		sobre.card[i].setAttribute("id", parseInt(i));
 		sobre.card[i].setAttribute('onclick', 'escreveSobre(id)'); 
 		/*126 EH O TAMANHO VERTICAL QUE A CARTA ASSUME QUANDO RECEBE O ZOOM, 168 EH O TAMANHO HORIZONTAL QUE A CARTA 
-		ASSUME QUANDO RECEBE O ZOOM, 13 EH UMA CONSTANTE PARA LEVAR AS CARTAS MAIS A DIREITA, QUANTO MAIOR MAIS PRA 
-		DIREITA ELE FICA. */
-		sobre.card[i].setAttribute("style", "top:" + (parseInt(i/4)*126) + "px; left:" + ((i%4)*168 + 268) + "px;");
+		ASSUME QUANDO RECEBE O ZOOM*/
+		/*Utiliza-se o Math.ceil para arredondar o valor da divisao do numero de cartas por 4 para cima, pois assim
+		eh possivel colocar todas as cartas em 4 fileiras e, se necessario, a ultima fica com menos*/
+		if(direcao == "horizontal"){
+			sobre.card[i].setAttribute("style", "top:" + (parseInt(i/Math.ceil(numeroCartas/4))*126) + "px; left:" + ((i%Math.ceil(numeroCartas/4))*168 + (520 - ((Math.ceil(numeroCartas/4) - 1) * 84))) + "px;");
+		} else {
+			sobre.card[i].setAttribute("style", "top:" + (parseInt(i/Math.ceil(numeroCartas/4))*125) + "px; left:" + ((i%Math.ceil(numeroCartas/4))*85 + (560 - ((Math.ceil(numeroCartas/4) - 1) * 42.5))) + "px;");
+		}
 		
-		//OBTEM QUAL CARTA SERAH COLOCADA NO SOBRE
+		//OBTEM QUAL CARTA SERA COLOCADA NO SOBRE
 		var nome = sobre.deck[i];
 		var FaceFront = document.createElement("div");
 		FaceFront.setAttribute("class", "face front card-sobre " + nome);
@@ -67,7 +92,7 @@ function escreveSobre(carta)
 	divText.appendChild(para);
 	
 	var Texto = "";
-	
+	//Ate 2 por possuir apenas duas informacoes no texto do sobre
 	for (var i = 0; i < 2; i++)
 	{
 		Texto += sobre.padrao[i] + sobre.infoCartas[carta][i];		
@@ -83,31 +108,34 @@ function escreveSobre(carta)
 	var n1 = sobre.linha[carta];
 	var n2 = sobre.coluna[carta];
 	
-	var nome = "card-" + n1	+ "-" + n2;
-	
 	//CARTA INFERIOR
 	var carta = document.createElement("div");
-	carta.setAttribute("class", "card");
-	carta.setAttribute("style", "top: 291px; left: -12px;");
+	carta.setAttribute("class", "card-" + direcao.charAt(0));
+
+	//CARTA SUPERIOR
+	var carta2 = document.createElement("div");
+	carta2.setAttribute("class", "card-" + direcao.charAt(0));
+
+	//Coloca as cartas nas posicoes corretas
+	if(direcao == "horizontal"){
+		carta.setAttribute("style", "top: 245px; left: -10px;");
+		carta2.setAttribute("style", "top: -10px; left: 450px;");
+	} else {
+		carta.setAttribute("style", "top: 291px; left: -12px;");
+		carta2.setAttribute("style", "top: 27px; left: 542px;");
+	}
 	el.appendChild(carta);
+	el.appendChild(carta2);
 	
+	var nome = "card-" + direcao.charAt(0) + "-" + n1	+ "-" + n2;
 	var carta_conteudo = document.createElement("div");
 	carta_conteudo.setAttribute("class", "face front card-sobre-text " + nome);
 	carta.appendChild(carta_conteudo);
 	
-	var nome2 = "card-" + (n1+1)	+ "-" + n2;
-	
-	//CARTA SUPERIOR
-	var carta2 = document.createElement("div");
-	carta2.setAttribute("class", "card");
-	carta2.setAttribute("style", "top: 27px; left: 542px;");
-	el.appendChild(carta2);
-	
+	var nome2 = "card-" + direcao.charAt(0) + "-" + (n1+1)	+ "-" + n2;
 	var carta_conteudo2 = document.createElement("div");
 	carta_conteudo2.setAttribute("class", "face front card-sobre-text " + nome2);
 	carta2.appendChild(carta_conteudo2);
-
-	
 		
 	el.onmousedown=function() 
 	{

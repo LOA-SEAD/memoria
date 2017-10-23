@@ -8,7 +8,7 @@ body
 	position:absolute;
 	left:50%;	
 	left:50%;	
-	top:50%;
+	top:44%;
 	margin-left: -600px;
 	margin-top: -250px;
 	width: 1200px;
@@ -79,6 +79,7 @@ body
 	display: inline;
 	position: relative;
 	top: 80%;
+	left: 14%;
 	margin: 5px;
 	width: 100px;
 }
@@ -97,6 +98,32 @@ body
 	
 	
 	z-index: 11;
+}
+
+.botao2
+{
+	display: inline;
+	position: relative;
+	top: 102%;
+	left: -13.5%;
+	margin: 5px;
+	width: 100px;
+}
+
+.botao2:hover
+{
+	-moz-transition-duration:0.8s;
+	-moz-transform: scale(1.2, 1.2);
+	
+	-ms-transition-duration: 0.8s;
+	-ms-transition-delay: 5s;
+	-ms-transform: scale(1.2, 1.2);
+	
+	-webkit-transition-duration: 0.8s; 
+	-webkit-transform: scale(1.2, 1.2);
+	
+	
+	z-index: 12;
 }
 
 .titulo
@@ -133,14 +160,6 @@ body
 }
 
 /*Parte do audio*/
-#botaoSom {
-	width: 60px;
-	height: 60px;
-	position: absolute;
-	top: 25px;
-	left: 45px;
-}
-
 #controleDeSom {
 	position: absolute;
 	left:90%;		
