@@ -63,7 +63,7 @@ function InitializeSobre()
 		/*Utiliza-se o Math.ceil para arredondar o valor da divisao do numero de cartas por 4 para cima, pois assim
 		eh possivel colocar todas as cartas em 4 fileiras e, se necessario, a ultima fica com menos*/
 		if(direcao == "horizontal"){
-			sobre.card[i].setAttribute("style", "top:" + (parseInt(i/Math.ceil(numeroCartas/4))*126) + "px; left:" + ((i%Math.ceil(numeroCartas/4))*168 + (520 - ((Math.ceil(numeroCartas/4) - 1) * 84))) + "px;");
+			sobre.card[i].setAttribute("style", "top:" + (parseInt(i/Math.ceil(numeroCartas/4))*125) + "px; left:" + ((i%Math.ceil(numeroCartas/4))*168 + (520 - ((Math.ceil(numeroCartas/4) - 1) * 84))) + "px;");
 		} else {
 			sobre.card[i].setAttribute("style", "top:" + (parseInt(i/Math.ceil(numeroCartas/4))*125) + "px; left:" + ((i%Math.ceil(numeroCartas/4))*85 + (560 - ((Math.ceil(numeroCartas/4) - 1) * 42.5))) + "px;");
 		}
@@ -118,11 +118,11 @@ function escreveSobre(carta)
 
 	//Coloca as cartas nas posicoes corretas
 	if(direcao == "horizontal"){
-		carta.setAttribute("style", "top: 245px; left: -10px;");
-		carta2.setAttribute("style", "top: -10px; left: 450px;");
+		carta.setAttribute("style", "top: 295px; left: -15px;");
+		carta2.setAttribute("style", "top: 30px; left: 540px;");
 	} else {
-		carta.setAttribute("style", "top: 291px; left: -12px;");
-		carta2.setAttribute("style", "top: 27px; left: 542px;");
+		carta.setAttribute("style", "top: 295px; left: 40px;");
+		carta2.setAttribute("style", "top: 30px; left: 590px;");
 	}
 	el.appendChild(carta);
 	el.appendChild(carta2);
