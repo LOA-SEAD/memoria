@@ -295,6 +295,7 @@ function buildCreditos()
     var para = document.createElement("br");
     el.appendChild(para);
 
+/*
     var para = document.createElement("p");
     para.innerHTML = "Promem�ria criado por: Douglas";
     el.appendChild(para);
@@ -307,7 +308,7 @@ function buildCreditos()
     el.appendChild(para);
     var para = document.createElement("br");
     el.appendChild(para);
-
+*/
     var divVoltar = document.createElement("div");
     divVoltar.setAttribute("id", "divVoltar");
     el.appendChild(divVoltar);
