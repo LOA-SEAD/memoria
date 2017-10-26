@@ -1,10 +1,10 @@
 {
 "descreveSobreGeral" : "Memória",
 "direcao" : "vertical",
-"totalParesFacilUpload" : 5,
-"totalParesMedioUpload" : 2,
-"totalParesDificilUpload" : 1,
+"totalParesFacilUpload" : 4,
+"totalParesMedioUpload" : 6,
+"totalParesDificilUpload" : 8,
 "tempoCarta" : 500,
-"nomeCarta": ["imagem 1", "gewg", "51", "pecinha", "uma bela pecinha", "uma bela pecinha", "uma bela pecinha", "uma bela pecinha"],
-"descricaoCarta": ["uma bela imagem", "gwe", "15", "uma bela pecinha", "uma bela pecinhaa", "uma bela pecinhava", "uma bela pecinhaas", "uma bela pecinhaas"]
+"nomeCarta": ["imagem 1", "gewg", "51", "pecinha", "imagem 1", "gewg", "51", "pecinha", "uma iiiiiiiiiiiiiiiiiiiiiiiii", "uma bela pecinha", "imagem 1", "gewg", "51", "pecinha", "uma iiiiiiiiiiiiiiiiiiiiiiiii", "uma bela pecinha", "uma bela pecinha", "uma bela pecinha"],
+"descricaoCarta": ["uma bela imagem", "gwe", "15", "uma bela pecinha", "uma bela imagem", "gwe", "15", "uma bela pecinha", "uma bela pecinhaa", "uma bela pecinhava", "uma bela pecinha", "uma bela imagem", "gwe", "15", "uma bela pecinha", "uma bela pecinhaa", "quis fazer um ctrl+C diferente aqui, por isso que essa descrição está diferente das demais!", "Faltou 1"]
 }

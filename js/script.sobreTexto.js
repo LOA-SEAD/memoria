@@ -18,8 +18,8 @@ $.ajax({
 
 sobre.padrao = new Array();
 
-sobre.padrao[0] = "<br><br><br><b>Conteúdo:</b> ";
-sobre.padrao[1] = "<br><b>Descrição:</b> ";
+sobre.padrao[0] = "<h3 style='text-align: left; position: relative; left:-50px; top: 40px;  font: 40px comic sans ms'>";
+sobre.padrao[1] = "</h3><br><b>Descrição:</b> ";
 
 sobre.infoCartas = new Array();
 
