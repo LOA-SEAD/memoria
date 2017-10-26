@@ -1,8 +1,10 @@
 {
-    "descreveSobreGeral": "dsadasdsa",
-    "direcao": "vertical",
-    "totalParesFacilUpload": 4,
-    "totalParesMedioUpload": 6,
-    "totalParesDificilUpload": 8,
-    "tempoCarta": 500
+"descreveSobreGeral" : "Memória",
+"direcao" : "vertical",
+"totalParesFacilUpload" : 5,
+"totalParesMedioUpload" : 2,
+"totalParesDificilUpload" : 1,
+"tempoCarta" : 500,
+"nomeCarta": ["imagem 1", "gewg", "51", "pecinha", "uma bela pecinha", "uma bela pecinha", "uma bela pecinha", "uma bela pecinha"],
+"descricaoCarta": ["uma bela imagem", "gwe", "15", "uma bela pecinha", "uma bela pecinhaa", "uma bela pecinhava", "uma bela pecinhaas", "uma bela pecinhaas"]
 }
